@@ -12,10 +12,19 @@
   <% end %>
 
   <div class="field">
+    <h1>What</h1>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
+  <!-- Nested form -->
+  <h3>Room Categories</h3>
+  <%= f.fields_for :room_categories do |hrc| %>
+    <div class="field room_categories_field">
+      <%= hrc.label :name %>
+      <%= hrc.text_field :name %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
