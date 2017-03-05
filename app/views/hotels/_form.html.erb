@@ -12,20 +12,19 @@
   <% end %>
 
   <div class="field">
-    <h1>What</h1>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
   <!-- Nested form -->
   <h3>Room Categories</h3>
-  <%= f.fields_for :room_categories do |hrc| %>
-    <div class="field room_categories_field">
-      <%= hrc.label :name %>
-      <%= hrc.text_field :name %>
+  <div id="room_categories">
+    <%= f.fields_for :room_categories do |hrc| %>
+      <%= render 'room_category_fields', :f => hrc %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add Category', f, :room_categories %>
     </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
   </div>
+    <%= f.submit 'Save' %>
 <% end %>
